@@ -1,6 +1,17 @@
 import { useState } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
 import type { Recipe } from "./types";
+import { playAddSound } from "./Sounds";
+
+/**
+ * Creates a box for adding a new recipe.
+ * 
+ * @returns A box which in we can add a new recipe by
+ * writing the recipes name, ingredients and the process of making it.
+ * The name field has to be filled, otherwise an alert will pop up.
+ * After adding the recipe, the fields will be cleared and an alert will pop up.
+ * The recipes are stored in the local storage of the browser.
+ */
 
 function AddRecipe() {
   const [name, setName] = useState<string>("");
@@ -12,7 +23,7 @@ function AddRecipe() {
       alert("Adj nevet a receptnek!");
       return;
     }
-
+    playAddSound();
     const recipes: Recipe[] = JSON.parse(
       localStorage.getItem("recipes") ?? "[]"
     );

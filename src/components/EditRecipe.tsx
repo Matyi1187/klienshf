@@ -10,6 +10,17 @@ import { useState, useEffect } from "react";
 import type { Recipe } from "./types";
 import type { EditRecipesProps } from "./types";
 
+/**
+ * Dialog for editing a recipe.
+ * Within the dialog, we can edit the name, ingredients and instructions of the recipe.
+ * We can either save the changes or cancel them.
+ * 
+ * @param open - Whether the dialog is open.
+ * @param recipe - The recipe to edit.
+ * @param onClose - Function to call when closing the dialog.
+ * @param onSave - Function to call when saving the edited recipe.
+ * @returns A dialog for editing a recipe.
+ */
 function EditRecipe({ open, recipe, onClose, onSave }: EditRecipesProps) {
   const [localRecipe, setLocalRecipe] = useState<Recipe | null>(null);
 

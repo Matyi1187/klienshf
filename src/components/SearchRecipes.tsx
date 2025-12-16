@@ -2,15 +2,18 @@ import { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import RecipeCard from "./RecipeCard";
 import type { Recipe } from "./types";
+import type { SearchTabProps } from "./types";
 
-type SearchTabProps = {
-    recipes: Recipe[];
-    handleEdit: (index: number) => void;
-    handleDelete: (index: number) => void;
-    toggleFavourite: (index: number) => void;
-};
-
-export default function SearchTab({ recipes, handleEdit, handleDelete, toggleFavourite }: SearchTabProps) {
+/**
+ * Component for searching recipes by name and ingredients.
+ * If no search criteria is provided, no results are shown.
+ * If we both type in the name and ingredients, only recipes matching both criteria are shown.
+ * Else if only one criteria is provided, recipes matching that criteria are shown.
+ * 
+ * @param recipes - The list of recipes to search from.
+ * @returns A box containing search fields and the search results which are recipe cards.
+ */
+export default function SearchTab({ recipes }: SearchTabProps) {
     const [nameQuery, setNameQuery] = useState("");
     const [ingredientsQuery, setIngredientsQuery] = useState("");
     const [results, setResults] = useState<Recipe[]>([]);
@@ -64,9 +67,9 @@ export default function SearchTab({ recipes, handleEdit, handleDelete, toggleFav
                             key={recipe.name}
                             index={mainIndex}
                             recipe={recipe}
-                            handleEdit={handleEdit}
-                            handleDelete={handleDelete}
-                            toggleFavourite={toggleFavourite}
+                            handleEdit={() => {}}
+                            handleDelete={() => {}}
+                            toggleFavourite={() => {}}
                             showButtons={false}
                         />
                     );

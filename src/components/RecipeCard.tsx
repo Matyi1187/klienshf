@@ -2,22 +2,26 @@ import { Box, Typography, IconButton, Divider } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import type { Recipe } from "./types";
+import type { RecipeCardProps } from "./types";
 
-type RecipeCardProps = {
-  recipe: Recipe;
-  index: number;
-  handleEdit: (index: number) => void;
-  handleDelete: (index: number) => void;
-  toggleFavourite: (index: number) => void;
-  mode?: "arrow" | "scroll";
-  showButtons?: boolean;
-};
-
+// Helper function to calculate margin left based on mode
 const calcMarginLeft = (mode) => {
   return mode === "arrow" ? 0 : 9;
 }
 
+/**
+ * A template for displaying a recipe card.
+ * 
+ * @param recipe - The recipe to display.
+ * @param index - The index of the recipe in the list.
+ * @param handleEdit - Function to call when editing the recipe.
+ * @param handleDelete - Function to call when deleting the recipe.
+ * @param toggleFavourite - Function to call when toggling the favourite status of the recipe.
+ * @param mode - The view mode, either "scroll" or "arrow". Defaults to "scroll".
+ * @param showButtons - Whether to show the edit, delete and favourite buttons. Defaults to true.
+ * @returns A card displaying the recipe information and three buttons for editing, deleting 
+ * and favouriting the recipe.
+ */
 function RecipeCard({ recipe, index, handleEdit, handleDelete, toggleFavourite, mode = "scroll", showButtons = true }: RecipeCardProps) {
   return (
     <Box

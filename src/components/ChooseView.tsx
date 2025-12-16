@@ -1,13 +1,15 @@
 import { ToggleButton, ToggleButtonGroup, Box } from "@mui/material";
 import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import ViewStreamIcon from "@mui/icons-material/ViewStream";
-import type { ViewMode } from "./types";
+import type { ChooseViewProps } from "./types";
 
-type ChooseViewProps = {
-  viewMode: ViewMode;
-  onChange: (mode: ViewMode) => void;
-};
-
+/**
+ * A component for choosing the view mode.
+ * 
+ * @param vioewMode - The current view mode.
+ * @param onChange - The function to call when the view mode changes.
+ * @returns A box with two toggle buttons for selecting the view mode.
+ */
 function ChooseView({ viewMode, onChange }: ChooseViewProps) {
   return (
     <Box

@@ -1,10 +1,14 @@
 import { AppBar, Tabs, Tab, Toolbar, Typography, Box } from "@mui/material";
-import React from "react";
+import type { HeaderProps } from "./types";
 
-export type HeaderProps = {
-  value: number;
-  onChange: (event: any, newValue: number) => void;
-}
+/**
+ * A header component for the application.
+ * We can switch between different tabs using this header.
+ * 
+ * @param value - The current selected tab index.
+ * @param onChange - The function to call when the tab is changed.
+ * @returns A header with tabs for navigation.
+ */
 
 function Header({ value, onChange }: HeaderProps) {
   return (
@@ -25,6 +29,7 @@ function Header({ value, onChange }: HeaderProps) {
             textColor="inherit"
             indicatorColor="secondary"
           >
+            <Tab label="Főoldal" />
             <Tab label="Receptek" />
             <Tab label="Új recept" />
             <Tab label="Receptkereső" />

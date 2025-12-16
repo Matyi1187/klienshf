@@ -8,11 +8,22 @@ import ChooseView from "./ChooseView";
 import type { ViewMode } from "./types";
 import ArrowView from "./ArrowView";
 import SearchTab from "./SearchRecipes";
+import { playFavouriteSound } from "./Sounds";
 import {
   loadRecipes,
   saveRecipes,
   toggleFavouriteByIndex,
 } from "./recipesStorage";
+
+/**
+ * A component to list recipes using recipe cards or 
+ * arrow view or
+ * search tab depending on the view mode.
+ * 
+ * @param showFavourites - Whether to show only favourite recipes. Defaults to false.
+ * @param tab - The current selected tab index. Defaults to 0, if tab is 2, the search tab will be shown.
+ * @returns either a list of recipe cards, an arrow view or a search tab.
+ */
 
 export function RecipesList({ showFavourites = false, tab = 0}) {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -28,6 +39,7 @@ export function RecipesList({ showFavourites = false, tab = 0}) {
     const newRecipes = toggleFavouriteByIndex(index, recipes);
     setRecipes(newRecipes);
     saveRecipes(newRecipes);
+    playFavouriteSound();
   };
 
   const handleEdit = (index: number) => {
@@ -42,9 +54,6 @@ export function RecipesList({ showFavourites = false, tab = 0}) {
   if (tab === 2) {
     return (<SearchTab
       recipes={recipes}
-      handleEdit={handleEdit}
-      handleDelete={(i) => deleteRecipe(i, recipes, setRecipes)}
-      toggleFavourite={handleToggleFavourite}
     />);
   }
 

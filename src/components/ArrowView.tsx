@@ -5,6 +5,15 @@ import RecipeCard from "./RecipeCard";
 import { useState } from "react";
 import type { ArrowViewProps } from "./types";
 
+/**
+ * Crates a view for navigating through recipes using arrows.
+ * 
+ * @param recipes - The list of recipes to navigate through.
+ * @param onEdit - The function to call when editing a recipe.
+ * @param onDelete - The function to call when deleting a recipe.
+ * @param onToggleFavourite - The function to call when toggling a recipe's favourite status.
+ * @returns two arrows and the current recipe card in between them.
+ */
 const ArrowView = ({ recipes, onEdit, onDelete, onToggleFavourite }: ArrowViewProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
