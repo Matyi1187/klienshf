@@ -9,7 +9,6 @@ import { playDeleteSound } from "./Sounds";
  * @param setRecipes  function to update the list of recipes.
  * @returns void.
  */
-
 export const deleteRecipe = (index: number, recipes: Recipe[], setRecipes: (r: Recipe[]) => void) => {
   const confirmed = window.confirm("Biztosan törölni szeretnéd a receptet?");
   if (!confirmed) return;
