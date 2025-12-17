@@ -100,7 +100,6 @@ export function RecipesList({ showFavourites = false, tab = 0}) {
           newRecipes[editIndex] = r;
           setRecipes(newRecipes);
           saveRecipes(newRecipes);
-
           setEditIndex(null);
           setEditRecipe(null);
         }}
