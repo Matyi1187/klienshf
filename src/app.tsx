@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import AddRecipe from "./components/AddRecipe";
 import RecipesList from "./components/RecipesList";
 import { Container } from "@mui/material";
-import MainPage from "./components/mainPage";
+import MainPage from "./components/MainPage";
 
 /**
  * App component that serves as the main layout for the application.
